@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benoît Husson · Technicien Systèmes et Réseaux</title>
+<meta name="description" content="Benoît Husson, Technicien Systèmes et Réseaux (diplômé GMSI, CESI Reims). Ancien chef et gérant de restaurant, disponible pour des missions en support et maintenance informatique.">
+<meta name="theme-color" content="#3D44E4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#3D44E4; --blue-deep:#2F35C4; --blue-ink:#2A30B0; --blue-50:#EEEFFE; --blue-100:#DADCFC; --on-blue-soft:#CFD2FB;
+  --saffron:#FFB52E; --saffron-50:#FFF2D9; --saffron-ink:#7A4A00;
+  --sheet:#ECECEC; --card:#FFFFFF; --ink:#2A2A30; --muted:#565660; --line:#DCDCE2;
+  --ok:#1F7A45;
+  --shadow:0 1px 2px rgba(31,35,120,.06),0 14px 30px -16px rgba(31,35,120,.28);
+  --shadow-up:0 2px 4px rgba(31,35,120,.08),0 22px 40px -18px rgba(31,35,120,.38);
+  --r:18px;
+  --head:"League Spartan",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--sheet);color:var(--ink);font:400 15px/1.7 var(--mono);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--saffron);color:var(--ink)}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{font-family:var(--head);font-weight:700;line-height:1.05;margin:0;letter-spacing:-.015em;text-wrap:balance}
+p{margin:0}
+.icon{width:18px;height:18px;flex:none}
+html{scrollbar-color:var(--blue) var(--sheet)}
+
+/* ===== Layout ===== */
+.app{display:grid;grid-template-columns:minmax(270px,320px) 1fr;min-height:100vh}
+@media (max-width:920px){.app{grid-template-columns:1fr}}
+
+/* ===== Rail (colonne bleue du CV) ===== */
+.rail{background:var(--blue);color:#fff;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;scrollbar-color:var(--on-blue-soft) var(--blue)}
+.rail-photo{position:relative;flex:none;aspect-ratio:320/324;overflow:hidden;background:var(--blue)}
+.rail-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;filter:grayscale(1) contrast(1.12) brightness(1.04)}
+.rail-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(61,68,228,0) 0%,rgba(61,68,228,0) 58%,rgba(61,68,228,.35) 76%,rgba(61,68,228,.8) 92%,var(--blue) 100%),linear-gradient(90deg,rgba(61,68,228,.55),rgba(61,68,228,0) 18%)}
+.rail-id{padding:26px 20px 0;text-align:center}
+.rail-id h1{font-size:clamp(2rem,2.4vw,2.35rem)!important;line-height:1!important}
+.rail-id .role{margin-top:8px}
+.rail-body{padding:18px 32px 22px;display:flex;flex-direction:column;gap:20px}
+.rail h1{font-size:2.55rem;font-weight:800;line-height:.92;color:#fff;letter-spacing:-.02em}
+.rail .role{font:700 .82rem/1.5 var(--mono);color:#fff;letter-spacing:.06em;text-transform:uppercase}
+.avail{display:inline-flex;align-items:center;gap:10px;align-self:center;background:var(--saffron);color:var(--ink);font:700 .78rem/1.3 var(--mono);padding:8px 14px;border-radius:99px}
+.avail i{width:9px;height:9px;border-radius:50%;background:var(--ink);position:relative}
+.avail i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--ink);opacity:0;animation:ping 2.4s var(--ease) infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:.7}80%,100%{transform:scale(1.6);opacity:0}}
+.rail-actions{display:grid;gap:10px;padding:0 32px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border-radius:12px;font:700 .85rem var(--mono);text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .25s var(--ease),background .2s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--blue-ink);box-shadow:0 10px 24px -12px rgba(10,12,80,.6)}
+.btn-line{border-color:rgba(255,255,255,.55);color:#fff;background:transparent}
+.btn-line:hover{background:rgba(255,255,255,.1)}
+.facts{list-style:none;margin:auto 32px 26px;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.22);display:grid;gap:8px;font-size:.8rem;color:var(--on-blue-soft)}
+.facts li{display:flex;align-items:center;gap:10px}
+.facts .icon{width:16px;height:16px;color:#fff}
+
+@media (min-width:921px) and (max-height:800px){
+  .rail-body{gap:12px;padding-top:12px;padding-bottom:14px}
+  .btn{padding:10px 16px}
+  .facts{gap:2px;padding-top:10px;margin-bottom:10px;font-size:.76rem}
+  .rail-id{padding-top:12px}
+  .rail-id h1{font-size:2rem!important}
+}
+@media (max-width:920px){
+  .rail{position:relative;height:auto;overflow:visible;display:block}
+  .rail-photo{aspect-ratio:auto;height:min(400px,100vw)}
+  .avail{white-space:nowrap;font-size:.76rem;padding:7px 12px}
+  .tabs{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+  .rail-body{padding:14px 20px 16px;gap:12px}
+  .rail h1{font-size:2.1rem}
+  .rail .role{font-size:.76rem}
+  .rail-actions{grid-template-columns:1fr 1fr;padding:0 20px 4px}
+  .rail .facts{display:none}
+}
+@media (max-width:420px){.rail-actions{grid-template-columns:1fr}}
+
+/* ===== Feuille (contenu) ===== */
+.sheet{min-width:0;display:flex;flex-direction:column}
+.tabs-wrap{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--sheet) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.tabs{position:relative;display:flex;gap:4px;padding:0 clamp(16px,4vw,56px);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{appearance:none;border:0;background:none;cursor:pointer;font:700 1.05rem var(--head);color:var(--muted);padding:22px 14px 20px;white-space:nowrap;display:flex;align-items:center;gap:8px;transition:color .2s}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--blue-ink)}
+.tab .count{font:700 .76rem var(--mono);background:var(--blue-100);color:var(--blue-ink);border-radius:99px;padding:1px 7px}
+.ink-bar{position:absolute;bottom:-1px;left:0;height:4px;border-radius:4px 4px 0 0;background:var(--saffron);transition:transform .5s var(--ease),width .5s var(--ease);pointer-events:none}
+main{padding:clamp(28px,5vw,64px) clamp(16px,4vw,56px) 40px;flex:1}
+.panel{max-width:1040px;margin:0 auto}
+.panel[hidden]{display:none}
+.panel-head{margin-bottom:32px;max-width:720px}
+.panel-head h2{font-size:clamp(2.1rem,4.4vw,3.2rem);color:var(--ink)}
+.panel-head p{color:var(--muted);margin-top:14px}
+.js .panel.enter>*{animation:rise .6s var(--ease) both}
+.js .panel.enter>*:nth-child(2){animation-delay:.05s}
+.js .panel.enter>*:nth-child(3){animation-delay:.1s}
+.js .panel.enter>*:nth-child(4){animation-delay:.15s}
+.js .panel.enter>*:nth-child(5){animation-delay:.2s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow)}
+.hl-s{white-space:nowrap;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:linear-gradient(transparent 58%,var(--saffron) 58%,var(--saffron) 92%,transparent 92%);padding:0 .08em}
+.hl-b{color:var(--blue)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.chips li{font:700 .76rem var(--mono);padding:5px 10px;border-radius:8px;background:var(--blue-50);color:var(--blue-ink)}
+.chips.warm li{background:var(--saffron-50);color:var(--saffron-ink)}
+.link-arrow{min-height:44px;display:inline-flex;align-items:center;gap:8px;font:700 .85rem var(--mono);color:var(--blue-ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer}
+.link-arrow .icon{transition:transform .3s var(--ease)}
+.link-arrow:hover .icon{transform:translateX(4px)}
+
+/* ===== Accueil ===== */
+.statement{font-size:clamp(2.5rem,5.4vw,4rem);font-weight:800;line-height:.98;letter-spacing:-.03em;max-width:12ch}
+.hero-row{display:flex;align-items:center;gap:clamp(22px,3vw,40px);flex-wrap:wrap}
+.avatar{position:relative;margin:0;width:clamp(140px,12.5vw,184px);aspect-ratio:1;flex:none}
+.avatar::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--saffron);transform:translate(8px,8px)}
+.avatar .disc{position:relative;display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:var(--shadow-up);background:#ddd}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;filter:grayscale(1) contrast(1.05);transition:transform .8s var(--ease)}
+.avatar:hover img{transform:scale(1.05)}
+@media (max-width:700px){.avatar{order:-1;width:112px}}
+.intro{text-align:left;max-width:62ch;margin:22px 0 24px;color:var(--muted);font-size:1rem}
+.intro strong{color:var(--ink)}
+.home-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;align-items:stretch}
+@media (max-width:1100px){.home-grid{grid-template-columns:1fr}}
+
+.flux{padding:26px;--acc:var(--saffron);--acc-soft:var(--saffron-50);--acc-ink:var(--saffron-ink);transition:background .5s}
+.flux[data-mode="it"]{--acc:var(--blue);--acc-soft:var(--blue-50);--acc-ink:var(--blue-ink)}
+.flux-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.flux h3{font-size:1.45rem}
+.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--sheet);border-radius:99px;padding:4px}
+.seg button{position:relative;z-index:1;border:0;background:none;cursor:pointer;padding:12px 16px;border-radius:99px;font:700 .8rem var(--mono);color:var(--muted);transition:color .35s;display:flex;align-items:center;justify-content:center;gap:6px}
+.seg button[aria-pressed="true"]{color:var(--ink)}
+.flux[data-mode="it"] .seg button[aria-pressed="true"]{color:#fff}
+.seg .knob{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:99px;background:var(--acc);transition:transform .55s var(--ease),background .45s;box-shadow:0 6px 14px -6px color-mix(in srgb,var(--acc) 80%,transparent)}
+.flux[data-mode="it"] .knob{transform:translateX(100%)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+@media (min-width:1100px){.steps{grid-template-columns:1fr 1fr}}
+.step{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--acc-soft);transition:background .45s}
+.step .n{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--acc);color:var(--ink);font:700 .85rem var(--mono);transition:background .45s,color .45s}
+.flux[data-mode="it"] .step .n{color:#fff}
+.step b{display:block;font:700 1.05rem/1.2 var(--head)}
+.step small{display:block;color:var(--muted);font-size:.8rem;line-height:1.5;margin-top:2px}
+.step .txt{transition:opacity .22s,filter .22s,transform .22s}
+.flux.swap .txt{opacity:0;filter:blur(3px);transform:translateX(6px)}
+.flux-foot{margin-top:18px;font-size:.85rem;color:var(--muted)}
+.flux-foot strong{color:var(--acc-ink);transition:color .45s}
+
+.brief{padding:26px 28px;display:grid;grid-template-columns:1.4fr 1fr;gap:18px 32px;align-items:start;margin-bottom:24px}
+.brief h3{grid-column:1/-1}
+@media (max-width:900px){.brief{grid-template-columns:1fr}}
+.brief h3{font-size:1.45rem}
+.brief dl{margin:0;display:grid;gap:14px}
+.brief dt{font:700 .76rem var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--blue-ink)}
+.brief dd{margin:2px 0 0;font-size:.9rem}
+.goal{padding:16px 18px;border-radius:14px;background:var(--blue);color:#fff;font-size:.86rem}
+.goal b{font-family:var(--head);font-size:1.1rem;display:block;margin-bottom:4px}
+
+.scale{margin:0 0 24px;padding:22px 24px;background:var(--blue-50);border-radius:var(--r);display:grid}
+@media (max-width:700px){.scale{grid-template-columns:1fr;gap:12px}}
+.scale .badge-chu{flex:none;width:52px;height:52px;border-radius:14px;background:var(--blue);color:#fff;display:grid;place-items:center}
+.scale .badge-chu .icon{width:30px;height:30px}
+.scale p{font:600 clamp(1.05rem,1.6vw,1.25rem)/1.35 var(--head);color:var(--ink)}
+.scale p b{color:var(--blue-ink);font-weight:800;white-space:nowrap}
+.scale .link-arrow{margin-top:6px}
+
+.motto{margin:0 0 24px;padding:30px;border-radius:var(--r);background:var(--saffron);display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.motto svg{width:42px;height:42px;color:var(--ink)}
+.motto blockquote{margin:0;font:700 clamp(1.3rem,2.4vw,1.75rem)/1.25 var(--head)}
+.motto cite{display:block;margin-top:10px;font:400 .8rem var(--mono);font-style:normal;color:#4A2D00}
+
+/* ===== Projets ===== */
+.picker{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+@media (max-width:760px){.picker{grid-template-columns:1fr}}
+.pick{appearance:none;text-align:left;cursor:pointer;border:2px solid transparent;background:var(--card);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:grid;gap:12px;align-content:space-between;color:var(--ink);font:inherit;transition:transform .3s var(--ease),border-color .25s,box-shadow .3s}
+.pick:hover{transform:translateY(-3px);box-shadow:var(--shadow-up)}
+.pick[aria-selected="true"]{border-color:var(--blue);background:linear-gradient(var(--card),var(--card)) padding-box}
+.pick .top{display:flex;justify-content:space-between;align-items:center;font:700 .76rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.pick .st{display:inline-flex;align-items:center;gap:5px;background:var(--saffron);color:var(--ink);border-radius:99px;padding:3px 9px;text-transform:none;letter-spacing:0}
+.pick .st .icon{width:12px;height:12px}
+.pick b{font:700 1.2rem/1.15 var(--head)}
+.pick[aria-selected="true"] b{color:var(--blue-ink)}
+.project{overflow:hidden}
+.project[hidden]{display:none}
+.p-band{background:var(--blue);color:#fff;padding:28px 30px 26px;display:grid;gap:14px}
+.p-band h3{font-size:clamp(1.7rem,3.2vw,2.4rem);color:#fff}
+.p-band p{color:#E4E5FD;max-width:68ch}
+.keyfacts{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:2px 0 0;padding:0}
+.keyfacts li{background:rgba(255,255,255,.14);border-radius:99px;padding:5px 12px;font:700 .76rem var(--mono);display:inline-flex;align-items:center;gap:6px}
+.keyfacts li.ok{background:var(--saffron);color:var(--ink)}
+.keyfacts .icon{width:14px;height:14px}
+.p-body{padding:28px 30px 30px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media (max-width:900px){.p-body{grid-template-columns:1fr;gap:22px}}
+.p-body h4{font:700 1.05rem var(--head);color:var(--blue-ink);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.p-body h4::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--saffron)}
+.p-body ul{margin:0;padding-left:18px;font-size:.88rem}
+.p-body li{margin-bottom:7px}
+.p-body li::marker{color:var(--blue)}
+.p-body p{font-size:.88rem}
+.p-body .wide{grid-column:span 2}
+@media (max-width:900px){.p-body .wide{grid-column:auto}}
+.trail{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.trail span{font:700 .78rem var(--mono);padding:8px 14px;border-radius:99px;background:var(--blue);color:#fff}
+.trail svg{width:14px;height:14px;color:var(--muted)}
+.trail span.root{background:var(--saffron);color:var(--ink)}
+.p-result{grid-column:1/-1;display:flex;gap:14px;align-items:flex-start;background:var(--saffron-50);border-radius:14px;padding:16px 18px;font-size:.9rem}
+.p-result .icon{color:var(--saffron-ink);margin-top:3px}
+.p-tags{grid-column:1/-1}
+.p-body ul.chips{padding-left:0}
+
+/* ===== Texte justifié ===== */
+.p-band p,.p-body p,.p-body li,.stop p,.lab-notes p,.notes li,.panel-head p,.net-info p,.g-ticket p,.kitchen .langs{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+
+/* ===== En bref mis en valeur ===== */
+.brief-hl{border:3px solid var(--blue);box-shadow:var(--shadow-up)}
+.brief-hl h3{font-size:1.8rem;display:flex;align-items:center;gap:12px}
+.brief-hl h3::before{content:"";width:14px;height:14px;border-radius:4px;background:var(--saffron)}
+.brief-hl dd{font-size:.95rem;color:var(--ink)}
+
+/* ===== Corps des réalisations ===== */
+.p-body.stack{display:grid;grid-template-columns:1fr;gap:16px}
+.p-body.stack .blk li,.p-body.stack .blk p,.p-body.stack .deliv span{text-align:left;hyphens:manual}
+.blk{border-radius:16px;padding:22px 24px;list-style:none}
+.blk.cool{background:var(--blue-50)}
+.blk.warm{background:var(--saffron)}
+.blk.warm h4{color:var(--ink)}
+.blk.warm h4::before{background:var(--ink)}
+.blk.quote p{font:600 1.15rem/1.45 var(--head);color:var(--ink);text-align:left}
+.two-col{columns:2;column-gap:36px}
+.two-col li{break-inside:avoid}
+@media (max-width:760px){.two-col{columns:1}}
+.steps3{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:34px}
+.steps3>.blk{position:relative}
+.steps3 h4::before{display:none}
+.num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;font:700 .85rem var(--mono);margin-right:10px}
+.steps3>.blk:not(:last-child)::after{content:"";position:absolute;left:38px;bottom:-26px;width:12px;height:12px;border-right:3px solid var(--blue);border-bottom:3px solid var(--blue);transform:rotate(45deg)}
+.steps3>.blk:not(:last-child)::before{content:"";position:absolute;left:44px;bottom:-30px;width:3px;height:26px;background:var(--blue)}
+.deliv{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.deliv{grid-template-columns:1fr}}
+.deliv li{display:grid;grid-template-columns:36px 1fr;gap:12px;background:var(--card);border-radius:12px;padding:14px 16px;margin:0;font-size:.85rem;box-shadow:0 1px 2px rgba(31,35,120,.06)}
+.deliv li::marker{content:none}
+.deliv .icon{width:22px;height:22px;color:var(--blue);margin-top:2px}
+.deliv b{display:block;font:700 1rem var(--head);margin-bottom:2px}
+.scene.game-hl{background:var(--saffron-50);border-bottom:1px solid #F5DDA8;padding:28px 30px}
+.game-hl .scene-head h4{font-size:1.45rem;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.g-badge{font:700 .76rem var(--mono);background:var(--saffron);color:var(--ink);padding:4px 10px;border-radius:99px}
+.scale-row{display:flex;align-items:center;gap:20px}
+.scale-cta{justify-self:start;margin-top:18px}
+.li-link{color:inherit;text-underline-offset:3px}
+.li-link:hover{color:#fff}
+
+/* ===== Vidéos ===== */
+.vid{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:16px;background:var(--blue);box-shadow:var(--shadow-up)}
+.p-video{padding:24px 30px;background:var(--blue-50);border-bottom:1px solid var(--blue-100)}
+@media (max-width:600px){.p-video{padding:16px}}
+
+/* ===== Scènes animées ===== */
+.scene{padding:24px 30px;background:var(--blue-50);border-bottom:1px solid var(--blue-100);display:grid;gap:16px}
+.scene-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.scene-head h4{font:700 1.15rem var(--head);color:var(--ink)}
+.replay{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:99px;border:2px solid var(--blue-100);background:var(--card);color:var(--blue-ink);font:700 .8rem var(--mono);cursor:pointer;transition:transform .25s var(--ease),background .2s}
+.replay:hover{transform:translateY(-2px)}
+.replay .icon{width:14px;height:14px}
+.replay.go{background:var(--blue);border-color:var(--blue);color:#fff}
+.scene-stats{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.82rem;color:var(--muted)}
+.scene-stats span{display:inline-flex;align-items:center;gap:8px}
+.scene-stats b{color:var(--ink);font-variant-numeric:tabular-nums}
+.scene-stats .wk b{color:var(--blue-ink)}
+.scene-stats.big b{font:800 1.9rem/1 var(--head);color:var(--blue-ink)}
+.scene-note{font-size:.76rem;color:var(--muted)}
+.sw{width:12px;height:12px;border-radius:3px;background:var(--line);display:inline-block}
+.sw.m{background:var(--saffron)}.sw.i{background:var(--blue)}.sw.u{background:var(--ok)}
+.sw.warn{background:#E8590C}.sw.other{background:repeating-linear-gradient(45deg,#C9C9D2 0 2px,#ECECF1 2px 4px)}
+.move-grid{display:grid;grid-template-columns:repeat(25,1fr);gap:4px}
+@media (max-width:600px){.move-grid{grid-template-columns:repeat(17,1fr)}}
+.move-grid i{aspect-ratio:1;border-radius:3px;background:var(--card);box-shadow:inset 0 0 0 1px var(--blue-100);transition:background .35s,transform .35s var(--ease)}
+.move-grid i.m{background:var(--saffron);box-shadow:none}
+.move-grid i.i{background:var(--blue);box-shadow:none}
+.move-grid i.u{background:var(--ok);box-shadow:none;transform:scale(.8);border-radius:50%}
+.flow{position:relative;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;padding:6px 0}
+.flow .track{position:absolute;left:12%;right:12%;top:50%;height:4px;margin-top:-2px;border-radius:4px;background:var(--blue-100);overflow:hidden}
+.flow .track::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,var(--blue) 0 10px,transparent 10px 34px);animation:flow 1.2s linear infinite;animation-play-state:var(--play,paused)}
+@keyframes flow{to{background-position:34px 0}}
+.st-node{position:relative;justify-self:center;display:inline-flex;flex-direction:column;align-items:center;gap:6px;font:700 .76rem var(--mono);color:var(--ink);background:var(--card);border:2px solid var(--blue-100);border-radius:14px;padding:12px 10px;min-width:96px;transition:border-color .3s,transform .3s var(--ease)}
+.st-node .icon{color:var(--blue)}
+.st-node.lit{border-color:var(--blue);transform:translateY(-3px)}
+@media (max-width:600px){.st-node{min-width:0;padding:10px 6px;font-size:.7rem}.flow .track{left:10%;right:10%}}
+.visio-grid{display:grid;grid-template-columns:repeat(29,1fr);gap:5px}
+@media (max-width:600px){.visio-grid{grid-template-columns:repeat(15,1fr)}}
+.visio-grid i{aspect-ratio:1.6;border-radius:4px;background:#E8590C;transition:background .3s,transform .4s var(--ease)}
+.visio-grid i.other{background:repeating-linear-gradient(45deg,#C9C9D2 0 2px,#ECECF1 2px 4px)}
+.visio-grid i.ok{background:var(--blue);transform:scale(1.08)}
+
+/* ---- Avant / après ---- */
+.compare{position:relative;border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);min-height:300px;user-select:none;touch-action:pan-y}
+.cmp-layer{position:absolute;inset:0;padding:0 0 14px;overflow:hidden}
+.cmp-before{background:#fff}
+.cmp-after{background:#F6F7FF;clip-path:inset(0 0 0 var(--pos))}
+.xl-bar,.glpi-bar{display:flex;align-items:center;height:34px;padding:0 14px;font:700 .76rem var(--mono)}
+.xl-bar{background:#1E7145;color:#fff}
+.glpi-bar{background:var(--blue);color:#fff}
+.compare table{width:100%;border-collapse:collapse;font:400 .78rem var(--mono)}
+.xl td,.xl th{border:1px solid #D7D7D7;padding:6px 8px;white-space:nowrap;text-align:left}
+.xl th,.xl td:first-child{background:#F0F0F0;color:#666;font-weight:400;text-align:center;width:28px}
+.xl tr:nth-child(2) td{font-weight:700}
+.xl td.bad{background:#FDE2DD;color:#A61B00;font-weight:700}
+.gl{margin-top:6px}
+.gl th{text-align:left;padding:8px 14px;font:700 .72rem var(--mono);color:var(--blue-ink);text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--blue-100)}
+.gl td{padding:9px 14px;border-bottom:1px solid var(--blue-100)}
+.pill{font-style:normal;font:700 .72rem var(--mono);padding:3px 9px;border-radius:99px;white-space:nowrap}
+.pill.ok{background:#DDF3E6;color:#155C33}.pill.warn{background:var(--saffron);color:var(--ink)}.pill.blue{background:var(--blue-100);color:var(--blue-ink)}
+.gl-log{margin:12px 14px 0;font-size:.76rem;color:var(--muted)}
+.cmp-tag{position:absolute;bottom:12px;left:14px;font:700 .76rem var(--mono);background:var(--ink);color:#fff;padding:5px 10px;border-radius:99px}
+.cmp-tag.after{left:auto;right:14px;background:var(--blue)}
+.cmp-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:4px;margin-left:-2px;background:var(--saffron);pointer-events:none}
+.cmp-handle span{position:absolute;top:50%;left:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:var(--saffron);box-shadow:0 6px 16px -6px rgba(0,0,0,.4)}
+.cmp-handle span::before,.cmp-handle span::after{content:"";position:absolute;top:50%;width:0;height:0;margin-top:-6px;border:6px solid transparent}
+.cmp-handle span::before{left:5px;border-right-color:var(--ink)}.cmp-handle span::after{right:5px;border-left-color:var(--ink)}
+.cmp-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.cmp-range:focus-visible+*{outline:none}
+.compare:focus-within .cmp-handle span{outline:3px solid var(--blue);outline-offset:2px}
+@media (max-width:600px){.compare{min-height:330px}.compare table{font-size:.7rem}.gl td,.gl th{padding:7px 8px}.xl td:nth-child(4),.xl th:nth-child(4){display:none}}
+
+/* ---- Mini-jeu ---- */
+.game{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+@media (max-width:820px){.game{grid-template-columns:1fr}}
+.g-ticket{grid-column:1/-1;background:var(--card);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);font-size:.88rem}
+.g-label{display:inline-block;font:700 .72rem var(--mono);background:#FDE2DD;color:#A61B00;padding:3px 9px;border-radius:99px;margin-bottom:8px}
+.g-actions{display:grid;gap:8px}
+.g-actions button{display:flex;align-items:center;gap:10px;text-align:left;min-height:46px;padding:10px 14px;border-radius:12px;border:2px solid var(--blue-100);background:var(--card);color:var(--ink);font:700 .8rem var(--mono);cursor:pointer;transition:transform .25s var(--ease),border-color .2s,background .2s}
+.g-actions button:hover:not(:disabled){transform:translateX(4px);border-color:var(--blue)}
+.g-actions button .icon{color:var(--blue);width:16px;height:16px}
+.g-actions button[data-r="ok"]{background:var(--blue-50);border-color:var(--blue-100);color:var(--muted)}
+.g-actions button[data-r="trap"]{background:#FDE2DD;border-color:#F5B7AB}
+.g-actions button[data-r="win"]{background:var(--saffron);border-color:var(--saffron)}
+.g-actions button:disabled{cursor:default}
+.g-log{list-style:none;margin:0;padding:0;display:grid;gap:8px;align-content:start;min-height:120px}
+.g-log li{background:var(--card);border-radius:12px;padding:12px 14px;font-size:.82rem;box-shadow:var(--shadow);animation:rise .45s var(--ease) both}
+.g-log li b{font-family:var(--head);font-size:.98rem;display:block;margin-bottom:2px}
+.g-log li.trap{border-left:0;background:#FFF1EE}
+.g-log li.win{background:var(--blue);color:#fff}
+.g-log li.win b{color:var(--saffron)}
+.g-log:empty::before{content:"Les résultats de vos tests s'afficheront ici.";font-size:.8rem;color:var(--muted);padding:12px 2px}
+
+/* ===== Labo ===== */
+.lab{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;align-items:start}
+@media (max-width:1100px){.lab{grid-template-columns:1fr}}
+.net{padding:26px}
+.tier{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.wire{width:3px;height:26px;margin:0 auto;background:repeating-linear-gradient(var(--blue) 0 5px,transparent 5px 10px);border-radius:2px}
+.node{appearance:none;cursor:pointer;font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);background:var(--card);border-radius:14px;padding:10px 14px;display:flex;gap:12px;align-items:center;min-width:200px;transition:border-color .2s,transform .3s var(--ease),background .2s,box-shadow .3s}
+.node:hover{transform:translateY(-2px);border-color:var(--blue-100);box-shadow:var(--shadow)}
+.node[aria-pressed="true"]{border-color:var(--blue);background:var(--blue-50)}
+.node .ic{width:34px;height:34px;border-radius:10px;background:var(--blue);color:#fff;display:grid;place-items:center;flex:none}
+.node .ic .icon{width:18px;height:18px}
+.node b{display:block;font:700 1rem/1.15 var(--head)}
+.node small{display:block;font-size:.76rem;color:var(--muted);line-height:1.3}
+.node.wip{border-style:dashed}
+.node.wip .ic{background:var(--saffron);color:var(--ink)}
+.nas{border:2px dashed var(--blue-100);border-radius:18px;padding:14px;background:var(--blue-50);width:100%}
+.nas-label{font:700 .76rem var(--mono);color:var(--blue-ink);text-transform:uppercase;letter-spacing:.08em;margin:0 0 10px 4px;display:block}
+.nas-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:520px){.nas-grid{grid-template-columns:1fr}.node{min-width:0;width:100%}}
+.nas-grid .node{min-width:0}
+.net-info{margin-top:18px;border-radius:14px;background:var(--sheet);padding:16px 18px;min-height:112px}
+.net-info b{font:700 1.1rem var(--head);display:block;margin-bottom:4px}
+.net-info p{font-size:.85rem;color:var(--muted)}
+.lab-notes{padding:26px;display:grid;gap:16px}
+.lab-notes h3{font-size:1.45rem}
+.lab-notes p{color:var(--muted);font-size:.9rem}
+.notes{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.notes li{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:.86rem}
+.notes .dot{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--blue-50);color:var(--blue-ink)}
+.notes .dot .icon{width:15px;height:15px}
+.notes li.wip .dot{background:var(--saffron-50);color:var(--saffron-ink)}
+.notes b{font-family:var(--head);font-size:1rem}
+
+/* ===== Parcours ===== */
+.path{list-style:none;margin:0;padding:0;display:grid;gap:14px;position:relative}
+.stop{display:grid;grid-template-columns:150px 28px 1fr;gap:18px;align-items:start}
+@media (max-width:700px){.stop{grid-template-columns:28px 1fr}.stop .when{grid-column:2;order:-1;text-align:left;padding-top:0}.stop .pin{grid-row:1/3;grid-column:1}}
+.stop .when{font:700 .78rem var(--mono);color:var(--muted);text-align:right;padding-top:20px}
+.stop .pin{position:relative;height:100%;display:flex;justify-content:center}
+.stop .pin::before{content:"";position:absolute;top:0;bottom:-14px;width:3px;background:var(--line)}
+.stop:last-child .pin::before{bottom:auto;height:30px}
+.stop .pin i{position:relative;margin-top:18px;width:18px;height:18px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 5px var(--sheet)}
+.stop.it .pin i{background:var(--blue)}
+.stop.next .pin i{background:var(--sheet);border:3px dashed var(--blue)}
+.stop .box{background:var(--card);border-radius:16px;padding:18px 22px;box-shadow:var(--shadow)}
+.stop.next .box{background:transparent;box-shadow:none;border:2px dashed var(--blue-100)}
+.stop.now .box{background:var(--blue);color:#fff}
+.stop.now .box p{color:#E4E5FD}
+.stop.now .box .where{color:#fff}
+.stop h3{font-size:1.3rem;margin-bottom:6px}
+.stop p{font-size:.86rem;color:var(--muted)}
+.stop .where{color:var(--ink);font-weight:700}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin:-12px 0 26px;font:700 .75rem var(--mono);color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:12px;height:12px;border-radius:50%;background:var(--saffron)}
+.legend .b i{background:var(--blue)}
+
+.school{width:76px;height:auto;border-radius:8px;flex:none}
+.box.has-logo{display:grid;grid-template-columns:1fr auto;column-gap:16px;align-items:start}
+.box.has-logo .school{grid-column:2;grid-row:1/3}
+.box.has-logo h3,.box.has-logo p{grid-column:1}
+.dip{display:flex;gap:14px;align-items:flex-start}
+.school.sm{width:58px;margin-top:2px}
+@media (max-width:700px){.school{width:60px}}
+
+/* ===== Compétences ===== */
+.skills{display:grid;grid-template-columns:1.6fr 1fr;gap:22px;align-items:start}
+@media (max-width:1100px){.skills{grid-template-columns:1fr}}
+.tech{padding:30px}
+.tech h3,.kitchen h3{font-size:1.6rem;margin-bottom:22px}
+.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px}
+@media (max-width:620px){.tech-grid{grid-template-columns:1fr}}
+.tech h4{font:700 1.05rem var(--head);color:var(--blue-ink);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.tech h4::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--blue)}
+.kitchen{position:relative;overflow:hidden;background:var(--saffron);border-radius:var(--r);padding:30px;box-shadow:var(--shadow)}
+.kitchen h3{max-width:12ch}
+.kitchen .chips li{background:rgba(255,255,255,.7);color:var(--ink)}
+.kitchen .langs{margin-top:24px;padding-top:18px;border-top:2px solid rgba(42,42,48,.15);font-size:.86rem}
+.kitchen .langs b{font-family:var(--head);font-size:1rem}
+
+/* ===== Pied ===== */
+.cta-strip{max-width:1040px;margin:48px auto 0;padding:24px 28px;border-radius:var(--r);background:var(--card);box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.cta-strip p{font:700 1.2rem var(--head)}
+.cta-strip .btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-deep)}
+.btn-ghost{border-color:var(--blue-100);color:var(--blue-ink)}
+footer{padding:28px clamp(16px,4vw,56px);font-size:.75rem;color:var(--muted);text-align:center}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,calc(100% + 48px));visibility:hidden;background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;font:700 .8rem var(--mono);transition:transform .4s var(--ease),visibility .4s;z-index:99;display:flex;gap:8px;align-items:center}
+.toast.show{transform:translate(-50%,0);visibility:visible}
+.toast .icon{color:var(--saffron)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+::view-transition-old(panel){animation:vt-out .18s ease both}
+::view-transition-new(panel){animation:vt-in .45s var(--ease) both}
+@keyframes vt-out{to{opacity:0;transform:translateY(-6px)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(12px)}}
+
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- Pictos (tracé 2px, coins arrondis) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V11l2-5h10l2 5v5M3 16h18M7 19v-3M17 19v-3"/><circle cx="8" cy="13" r=".6" fill="currentColor"/><circle cx="16" cy="13" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-hosp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l8-4 8 4v14M2 21h20M12 8v6M9 11h6M9 21v-3h6v3"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24" fill="currentColor"><path d="M4 18v-5c0-4 2-7 6-8l.7 1.6C8.6 7.5 7.7 9 7.6 11H10v7zm10 0v-5c0-4 2-7 6-8l.7 1.6c-2.1.9-3 2.4-3.1 4.4H20v7z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-router" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 16.5h.01M11 16.5h.01M8 9a5.5 5.5 0 0 1 8 0M5.5 6.5a9 9 0 0 1 13 0"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 21V5M9 7h6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16M8 16l4-5 3 3 5-6"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.5 2.5-2.5-.5-.5-2.5z"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></symbol>
+    <symbol id="i-net" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></symbol>
+    <symbol id="i-pan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="13" r="6"/><path d="M15.5 10.5 22 7"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4zM9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
+  </defs>
+</svg>
+
+<div class="app">
+  <!-- ===== Colonne profil ===== -->
+  <aside class="rail" aria-label="Profil et contact">
+    <div class="rail-photo">
+      <img src="assets/portrait-rail-c.jpg" alt="Portrait de Benoît Husson" width="700" height="959">
+    </div>
+    <div class="rail-id">
+      <h1>Benoît Husson</h1>
+      <p class="role">Technicien Systèmes et Réseaux</p>
+    </div>
+    <div class="rail-body">
+      <span class="avail"><i></i>Disponible pour des missions courtes</span>
+
+    </div>
+    <div class="rail-actions">
+      <a class="btn btn-light" href="mailto:benoithusson.it@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>M'écrire</a>
+      <a class="btn btn-line" href="assets/CV-Benoit-Husson-GMSI.pdf" target="_blank" rel="noopener"><svg class="icon"><use href="#i-down"/></svg>Télécharger le CV</a>
+    </div>
+    <ul class="facts">
+        <li><svg class="icon"><use href="#i-cap"/></svg>Diplômé GMSI · CESI 2026</li>
+        <li><svg class="icon"><use href="#i-pin"/></svg>Reims et alentours</li>
+        <li><svg class="icon"><use href="#i-car"/></svg>Permis B</li>
+      <li><svg class="icon"><use href="#i-globe"/></svg>Anglais courant · Espagnol</li>
+        <li><svg class="icon"><use href="#i-in"/></svg><a class="li-link" href="https://www.linkedin.com/in/benoithussonreims" target="_blank" rel="noopener">Mon profil LinkedIn</a></li>
+      </ul>
+  </aside>
+
+  <!-- ===== Feuille ===== -->
+  <div class="sheet">
+    <div class="tabs-wrap">
+      <nav class="tabs" role="tablist" aria-label="Sections du portfolio">
+        <button class="tab" role="tab" id="t-accueil" aria-controls="panel-accueil" data-tab="accueil">Accueil</button>
+        <button class="tab" role="tab" id="t-realisations" aria-controls="panel-realisations" data-tab="realisations">Réalisations <span class="count">3</span></button>
+        <button class="tab" role="tab" id="t-labo" aria-controls="panel-labo" data-tab="labo">Labo</button>
+        <button class="tab" role="tab" id="t-parcours" aria-controls="panel-parcours" data-tab="parcours">Parcours</button>
+        <button class="tab" role="tab" id="t-competences" aria-controls="panel-competences" data-tab="competences">Compétences</button>
+        <span class="ink-bar" aria-hidden="true"></span>
+      </nav>
+    </div>
+
+    <main>
+      <!-- ===== ACCUEIL ===== -->
+      <section class="panel" id="panel-accueil" role="tabpanel" aria-labelledby="t-accueil" tabindex="0">
+        <div class="hero-row">
+          <h2 class="statement">Du <span class="hl-s">menu du jour</span> aux <span class="hl-b">menus Windows</span>.</h2>
+        </div>
+        <p class="intro">Pendant sept ans, j'ai dirigé un restaurant et sa cuisine : La Petite Cantoche, à Reims. Depuis 2025, je mets la même énergie au service des utilisateurs d'outils informatiques : <strong>des flux maîtrisés, des priorités claires, des gens satisfaits de leurs instruments de travail et protégés.</strong></p>
+
+        <div class="card brief brief-hl">
+          <h3>En bref</h3>
+          <dl>
+            <div class="dip"><div><dt>Diplôme</dt><dd>Gestionnaire en Maintenance et Support Informatique (GMSI), CESI Reims, obtenu en juillet 2026</dd></div></div>
+            <div><dt>Terrain</dt><dd>6 mois en support de proximité au CHU de Reims</dd></div>
+            <div><dt>Atouts</dt><dd>7 ans de management d'équipe et de relation client</dd></div>
+          </dl>
+          <div class="goal"><b>Ce que je cherche</b><p>Des missions en support et maintenance pour gagner de l'expérience terrain, avant d'intégrer en octobre 2027 la formation Administrateur Systèmes et Réseaux BAC +3 à CESI Reims, en professionnalisation.</p></div>
+        </div>
+
+        <div class="scale">
+          <div class="scale-row">
+            <span class="badge-chu"><svg class="icon"><use href="#i-hosp"/></svg></span>
+            <p>Mon expérience au CHU de Reims : <b>13 000 utilisateurs</b>, <b>9 370 postes</b>, <b>plus de 50 000 tickets</b> par an et <b>87 dispositifs</b> de visioconférence.</p>
+          </div>
+          <button class="btn btn-blue scale-cta" data-goto="realisations">Voir ce que j'y ai fait <svg class="icon"><use href="#i-arrow"/></svg></button>
+        </div>
+
+        <div class="motto">
+          <svg aria-hidden="true"><use href="#i-quote"/></svg>
+          <div>
+            <blockquote>Tout n'est pas technique. Un service au point, c'est un service qui satisfait ses utilisateurs et qui les protège.</blockquote>
+          </div>
+        </div>
+        <div class="card flux" id="flux" data-mode="cuisine">
+            <div class="flux-top">
+              <h3>Même logique, autre terrain</h3>
+              <div class="seg" role="group" aria-label="Choisir un univers">
+                <span class="knob" aria-hidden="true"></span>
+                <button type="button" data-mode="cuisine" aria-pressed="true"><svg class="icon" style="width:15px;height:15px"><use href="#i-pan"/></svg>Cuisine</button>
+                <button type="button" data-mode="it" aria-pressed="false"><svg class="icon" style="width:15px;height:15px"><use href="#i-chip"/></svg>Informatique</button>
+              </div>
+            </div>
+            <ol class="steps" aria-live="polite">
+              <li class="step"><span class="n">1</span><span class="txt"><b>Le bon arrive</b><small>Lire la commande, repérer les urgences de la salle.</small></span></li>
+              <li class="step"><span class="n">2</span><span class="txt"><b>La mise en place</b><small>Tout préparer en amont pour ne rien improviser.</small></span></li>
+              <li class="step"><span class="n">3</span><span class="txt"><b>Le coup de feu</b><small>Coordonner la brigade, tenir les délais et la qualité.</small></span></li>
+              <li class="step"><span class="n">4</span><span class="txt"><b>Le client repart content</b><small>Écouter le retour, ajuster pour le service suivant.</small></span></li>
+            </ol>
+            <p class="flux-foot"><strong>Dans les deux cas :</strong> anticiper les flux, prioriser, communiquer.</p>
+          </div>
+
+      </section>
+
+      <!-- ===== RÉALISATIONS ===== -->
+      <section class="panel" id="panel-realisations" role="tabpanel" aria-labelledby="t-realisations" tabindex="0" hidden>
+        <div class="panel-head">
+          <h2>Trois tickets résolus au CHU de Reims</h2>
+          <p>Service Informatique de Proximité, entre support, déploiement et logistique. Choisissez une réalisation.</p>
+        </div>
+
+        <div class="picker" role="tablist" aria-label="Réalisations">
+          <button class="pick" role="tab" aria-selected="true" aria-controls="p1" id="pk1"><b>Déménagement Multi-Services</b><span class="top">Déploiement<span class="st"><svg class="icon"><use href="#i-check"/></svg>Résolu</span></span></button>
+          <button class="pick" role="tab" aria-selected="false" aria-controls="p2" id="pk2"><b>Remplacer un fichier Excel par GLPI</b><span class="top">Gestion de parc<span class="st"><svg class="icon"><use href="#i-check"/></svg>Résolu</span></span></button>
+          <button class="pick" role="tab" aria-selected="false" aria-controls="p3" id="pk3"><b>Des visioconférences qui ne plantent plus</b><span class="top">Diagnostic<span class="st"><svg class="icon"><use href="#i-check"/></svg>Résolu</span></span></button>
+        </div>
+
+        <article class="card project" id="p1" role="tabpanel" aria-labelledby="pk1">
+          <div class="p-band">
+            <h3>Déménagement Multi-Services</h3>
+            <p>À l'hôpital, les soins ne s'arrêtent pas, même en cas de déménagement : les postes doivent être prêts quand les équipes arrivent.</p>
+            <ul class="keyfacts"><li class="ok"><svg class="icon"><use href="#i-check"/></svg>Résolu</li><li>≈ 250 postes</li><li>3 semaines prévues</li><li>Plusieurs services</li></ul>
+          </div>
+          <div class="p-video"><video class="vid" src="assets/videos/demenagement.mp4" poster="assets/videos/demenagement.jpg" muted playsinline loop controls preload="none" aria-label="Vidéo : le déménagement des services hospitaliers"></video></div>
+          <div class="p-body stack">
+            <div class="blk cool"><h4>Ce que j'ai fait</h4><ul class="two-col">
+              <li>Suivi logistique du déménagement, service par service</li>
+              <li>Masterisation des postes et déploiement des logiciels via MCM</li>
+              <li>Installation des UC, écrans et périphériques, avec un câble management propre et durable</li>
+              <li>Tests de connectivité, puis aide à la prise en main des utilisateurs</li></ul></div>
+            <div class="blk warm quote"><h4>Ce que j'en retiens</h4><p>Un déménagement réussi, c'est une mise en place réussie : la préparation en amont évite l'improvisation le jour J.</p></div>
+            <div class="p-result"><svg class="icon"><use href="#i-check"/></svg><span>Des services opérationnels à leur installation, et des soignants accompagnés plutôt que livrés à eux-mêmes.</span></div>
+            <ul class="chips p-tags"><li>Masterisation</li><li>Déploiement OS</li><li>MCM</li><li>Câble management</li><li>Support N1</li></ul>
+          </div>
+        </article>
+
+        <article class="card project" id="p2" role="tabpanel" aria-labelledby="pk2" hidden>
+          <div class="p-band">
+            <h3>Remplacer un fichier Excel par GLPI</h3>
+            <p>Le stock d'un parc d'environ 10 000 postes se gérait sur Excel, avec des demandes orales et une double saisie. Résultat : du matériel déjà déployé apparaissait encore « en stock ».</p>
+            <ul class="keyfacts"><li class="ok"><svg class="icon"><use href="#i-check"/></svg>Résolu</li><li>1 145 PC</li><li>500+ moniteurs</li><li>3 solutions comparées</li></ul>
+          </div>
+          <div class="scene" data-scene="glpi">
+            <div class="scene-head">
+              <h4>Du fichier Excel au flux GLPI</h4>
+            </div>
+            <div class="flow" aria-hidden="true">
+              <div class="track"></div>
+              <span class="st-node"><svg class="icon"><use href="#i-box"/></svg>Réception</span>
+              <span class="st-node"><svg class="icon"><use href="#i-server"/></svg>Stock</span>
+              <span class="st-node"><svg class="icon"><use href="#i-list"/></svg>Picking</span>
+              <span class="st-node"><svg class="icon"><use href="#i-people"/></svg>Utilisateur</span>
+            </div>
+            <div class="scene-stats big">
+              <span><b data-v="pc" data-to="1145">0</b> PC injectés</span>
+              <span><b data-v="mon" data-to="500" data-suffix="+">0</b> moniteurs</span>
+              <span><b>1</b> seule base, tracée</span>
+            </div>
+          </div>
+
+          <div class="scene" data-scene="compare">
+            <div class="scene-head">
+              <h4>Avant / après : faites glisser le curseur</h4>
+              <span class="scene-note">Données fictives, à titre d'illustration</span>
+            </div>
+            <div class="compare" style="--pos:50%">
+              <div class="cmp-layer cmp-before" aria-hidden="true">
+                <div class="xl-bar"><span>Stock_Quai2_v3_FINAL(2).xlsx</span></div>
+                <table class="xl">
+                  <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+                  <tr><td>1</td><td>Désignation</td><td>Qté</td><td>Lieu</td><td>Statut</td></tr>
+                  <tr><td>2</td><td>PC portable 14"</td><td>12</td><td>Armoire 3</td><td class="bad">en stock ?</td></tr>
+                  <tr><td>3</td><td>PC portabe 14"</td><td>12</td><td>armoire3</td><td class="bad">doublon</td></tr>
+                  <tr><td>4</td><td>Écran 24"</td><td class="bad"></td><td>?</td><td>sorti (oral)</td></tr>
+                  <tr><td>5</td><td>Câble HDMI 2m</td><td>-3</td><td>Quai</td><td class="bad">stock négatif</td></tr>
+                  <tr><td>6</td><td>Dock USB-C</td><td>4</td><td>Bureau Logistique</td><td>à vérifier</td></tr>
+                </table>
+                <span class="cmp-tag">Avant · Excel</span>
+              </div>
+              <div class="cmp-layer cmp-after" aria-hidden="true">
+                <div class="glpi-bar"><span>GLPI · Gestion › Stock › Quai n°2</span></div>
+                <table class="gl">
+                  <tr><th>Article</th><th>Qté</th><th>Emplacement</th><th>Statut</th></tr>
+                  <tr><td>PC portable 14"</td><td>12</td><td>Bât. A › Stock › Armoire 3</td><td><i class="pill ok">En stock</i></td></tr>
+                  <tr><td>Écran 24"</td><td>30</td><td>Bât. A › Picking › Étagère B</td><td><i class="pill ok">Disponible</i></td></tr>
+                  <tr><td>Câble HDMI 2m</td><td>5</td><td>Quai › Picking</td><td><i class="pill warn">Seuil d'alerte</i></td></tr>
+                  <tr><td>Dock USB-C</td><td>4</td><td>Bât. A › Stock › Armoire 1</td><td><i class="pill blue">Réservé · ticket</i></td></tr>
+                </table>
+                <p class="gl-log">Historique : 1 Écran 24" sorti par Technicien 04 pour le ticket « Demande de matériel », Cardiologie.</p>
+                <span class="cmp-tag after">Après · GLPI</span>
+              </div>
+              <div class="cmp-handle" aria-hidden="true"><span></span></div>
+              <input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Comparer Excel (avant) et GLPI (après)">
+            </div>
+          </div>
+          <div class="p-body stack">
+            <ol class="steps3">
+              <li class="blk cool"><h4><span class="num">1</span>Comprendre</h4><ul>
+                <li>Entretiens avec les acteurs concernés</li>
+                <li>Cahier des charges rédigé avec le service Logistique</li>
+                <li>Benchmark et maquettes : GreaterWMS, Snipe-IT, GLPI</li></ul></li>
+              <li class="blk cool"><h4><span class="num">2</span>Choisir</h4><ul>
+                <li>Open source, sans coût de licence</li>
+                <li>Hébergé sur site, conforme au RGPD</li>
+                <li>Aligné sur ITIL, et sans concurrence avec l'outil maison du CHU</li></ul></li>
+              <li class="blk cool"><h4><span class="num">3</span>Installer</h4><ul>
+                <li>VM Ubuntu Server avec Apache2, MariaDB et PHP 8.3</li>
+                <li>Profils Self-Service, Technicien logistique, Observateur</li>
+                <li>Plugins GestStock, Barcode et DataInjection, seuils d'alerte</li>
+                <li>Nouveau circuit : ticket « Demande de matériel » priorisé, puis retrait en espace pick-up</li></ul></li>
+            </ol>
+            <div class="p-result"><svg class="icon"><use href="#i-check"/></svg><span>Tout l'inventaire et le stock ont été injectés dans GLPI : <b>1 145 PC et plus de 500 moniteurs</b>. Une source de vérité unique, partagée entre techniciens et logistique, où chaque mouvement est tracé et une alerte part avant la rupture de stock.</span></div>
+            <ul class="chips p-tags"><li>GLPI 11</li><li>Ubuntu Server</li><li>LAMP</li><li>ITIL</li><li>Cahier des charges</li><li>Benchmark</li></ul>
+          </div>
+        </article>
+
+        <article class="card project" id="p3" role="tabpanel" aria-labelledby="pk3" hidden>
+          <div class="p-band">
+            <h3>Des visioconférences qui ne plantent plus</h3>
+            <p>Freezes, latences, perte du son ou de l'image. Plusieurs interventions sans résultat, et un redémarrage comme seule réponse. Côté utilisateurs : du stress à chaque réunion.</p>
+            <ul class="keyfacts"><li class="ok"><svg class="icon"><use href="#i-check"/></svg>Résolu</li><li>35 barres Logitech synchronisées</li><li>4 livrables</li></ul>
+          </div>
+          <div class="scene game-hl" data-scene="game">
+            <div class="scene-head">
+              <h4><span class="g-badge">Mini-jeu</span>À vous de jouer : trouvez la panne</h4>
+              <button class="replay reset" type="button"><svg class="icon"><use href="#i-play"/></svg>Recommencer</button>
+            </div>
+            <div class="game">
+              <div class="g-ticket">
+                <span class="g-label">Ticket entrant</span>
+                <p><b>« La visio de la salle de réunion freeze encore ! »</b> Image figée, son coupé, en pleine réunion. Plusieurs interventions déjà, sans succès. Que testez-vous&nbsp;?</p>
+              </div>
+              <div class="g-actions" role="group" aria-label="Tests de diagnostic">
+                <button type="button" data-t="reboot"><svg class="icon"><use href="#i-play"/></svg>Redémarrer la barre</button>
+                <button type="button" data-t="phys"><svg class="icon"><use href="#i-tool"/></svg>Physique : câbles, alimentation, ventilation</button>
+                <button type="button" data-t="net"><svg class="icon"><use href="#i-net"/></svg>Réseau : perte de paquets, QoS</button>
+                <button type="button" data-t="app"><svg class="icon"><use href="#i-chat"/></svg>Applicatif : réglages Teams</button>
+                <button type="button" data-t="fw"><svg class="icon"><use href="#i-chip"/></svg>Firmware de la barre</button>
+              </div>
+              <ol class="g-log" aria-live="polite"></ol>
+            </div>
+          </div>
+          <div class="p-body stack">
+            <div class="blk cool"><h4>Le diagnostic, étape par étape</h4>
+              <div class="trail">
+                <span>Écoute de l'utilisateur</span><svg><use href="#i-arrow"/></svg>
+                <span>Physique : ventilation, alimentation, câblage</span><svg><use href="#i-arrow"/></svg>
+                <span>Réseau : perte de paquets, QoS</span><svg><use href="#i-arrow"/></svg>
+                <span>Applicatif : Teams et autres logiciels</span><svg><use href="#i-arrow"/></svg>
+                <span class="root">Cause : firmware jamais mis à jour</span>
+              </div>
+            </div>
+            <div class="blk warm quote"><h4>Le vrai problème</h4><p>Le cas isolé cachait un problème global : un parc hétérogène, sans procédure de dépannage, sans matériel de rechange, et des services qui travaillaient en silo.</p></div>
+            <div class="blk cool"><h4>Ce que j'ai livré</h4>
+              <ul class="deliv">
+                <li><svg class="icon"><use href="#i-server"/></svg><span><b>Logitech Sync</b>35 barres Logitech rattachées à leur emplacement, mises à jour et supervisées à distance. Les autres dispositifs, d'autres marques, sont hors de son périmètre.</span></li>
+                <li><svg class="icon"><use href="#i-book"/></svg><span><b>Une notice</b>La procédure de mise à jour des différents systèmes de visio.</span></li>
+                <li><svg class="icon"><use href="#i-chart"/></svg><span><b>Une étude</b>L'intérêt d'un parc homogène : coûts, maintenance, facilité d'usage.</span></li>
+                <li><svg class="icon"><use href="#i-list"/></svg><span><b>Un inventaire GLPI</b>Les systèmes de visio recensés, comme appui auprès du service des achats.</span></li>
+              </ul>
+            </div>
+            <div class="p-result"><svg class="icon"><use href="#i-check"/></svg><span>On passe d'une maintenance curative (« on redémarre ») à une gestion préventive et centralisée.</span></div>
+            <ul class="chips p-tags"><li>Logitech Sync</li><li>Cause racine</li><li>QoS</li><li>Microsoft Teams</li><li>GLPI</li><li>Documentation</li></ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- ===== LABO ===== -->
+      <section class="panel" id="panel-labo" role="tabpanel" aria-labelledby="t-labo" tabindex="0" hidden>
+        <div class="panel-head">
+          <h2>Mon labo à la maison</h2>
+          <p>Pour apprendre, rien ne vaut la pratique. Derrière ma box, j'administre mon propre petit réseau. Cliquez sur un élément pour voir son rôle.</p>
+        </div>
+        <div class="lab">
+          <div class="card net">
+            <div class="tier"><button class="node" data-k="box"><span class="ic"><svg class="icon"><use href="#i-globe"/></svg></span><span><b>Bbox</b><small>accès internet</small></span></button></div>
+            <div class="wire"></div>
+            <div class="tier"><button class="node" data-k="deco"><span class="ic"><svg class="icon"><use href="#i-router"/></svg></span><span><b>TP-Link Deco S7</b><small>mode routeur, Wi-Fi mesh</small></span></button></div>
+            <div class="wire"></div>
+            <div class="tier">
+              <div class="nas">
+                <span class="nas-label">NAS sous ZimaOS</span>
+                <div class="nas-grid">
+                  <button class="node" data-k="adguard"><span class="ic"><svg class="icon"><use href="#i-filter"/></svg></span><span><b>AdGuard Home</b><small>serveur DNS filtrant</small></span></button>
+                  <button class="node" data-k="zfw"><span class="ic"><svg class="icon"><use href="#i-shield"/></svg></span><span><b>ZFW</b><small>pare-feu hôte</small></span></button>
+                  <button class="node" data-k="komga"><span class="ic"><svg class="icon"><use href="#i-book"/></svg></span><span><b>Komga</b><small>bibliothèque manga</small></span></button>
+                  <button class="node" data-k="ghost"><span class="ic"><svg class="icon"><use href="#i-chart"/></svg></span><span><b>Ghostfolio</b><small>suivi financier</small></span></button>
+                </div>
+              </div>
+            </div>
+            <div class="wire"></div>
+            <div class="tier"><button class="node wip" data-k="kvm"><span class="ic"><svg class="icon"><use href="#i-server"/></svg></span><span><b>Laptop recyclé · KVM</b><small>en cours : Windows Server</small></span></button></div>
+            <div class="net-info" id="netInfo" aria-live="polite"><b>Choisissez un élément</b><p>Chaque brique a une raison d'être : apprendre, sécuriser, ou rendre service au quotidien.</p></div>
+          </div>
+          <div class="card lab-notes">
+            <h3>Pourquoi un labo ?</h3>
+            <p>C'est mon terrain d'entraînement. J'y teste en conditions réelles ce que j'apprends, sans risquer la production de qui que ce soit.</p>
+            <ul class="notes">
+              <li><span class="dot"><svg class="icon"><use href="#i-net"/></svg></span><span><b>Réseau.</b> Un routeur derrière la box opérateur, pour garder la main sur l'adressage et le Wi-Fi.</span></li>
+              <li><span class="dot"><svg class="icon"><use href="#i-shield"/></svg></span><span><b>Sécurité.</b> Un DNS filtrant pour tout le foyer et un pare-feu sur le NAS : protégé par défaut.</span></li>
+              <li><span class="dot"><svg class="icon"><use href="#i-box"/></svg></span><span><b>Auto-hébergement.</b> Des services utiles au quotidien, sans dépendre d'un cloud tiers.</span></li>
+              <li class="wip"><span class="dot"><svg class="icon"><use href="#i-server"/></svg></span><span><b>En cours.</b> Un hyperviseur KVM sur un vieux portable pour monter un Windows Server : Active Directory, DNS, GPO. De quoi préparer la formation ASR.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PARCOURS ===== -->
+      <section class="panel" id="panel-parcours" role="tabpanel" aria-labelledby="t-parcours" tabindex="0" hidden>
+        <div class="panel-head">
+          <h2>De la brigade au support</h2>
+          <p>Une reconversion qui a du sens : j'ai changé d'outils, mais je fais toujours un métier de service.</p>
+        </div>
+        <div class="legend"><span><i></i>Restauration</span><span class="b"><i></i>Informatique</span></div>
+        <ol class="path">
+          <li class="stop"><span class="when">2016</span><span class="pin"><i></i></span><div class="box"><h3>CAP Cuisine</h3><p><span class="where">Lycée Louis Darmanté.</span> Hygiène, techniques de la gastronomie française, et le goût de la rigueur.</p></div></li>
+          <li class="stop"><span class="when">2016 – 2018</span><span class="pin"><i></i></span><div class="box"><h3>Cuisinier itinérant</h3><p>Perfectionnement technique, et découverte de nombreuses organisations de production.</p></div></li>
+          <li class="stop"><span class="when">2018 – 2025</span><span class="pin"><i></i></span><div class="box"><h3>Chef et gérant</h3><p><span class="where">La Petite Cantoche.</span> Gestion opérationnelle, administrative et commerciale. Management de toute l'équipe, relation client au quotidien.</p></div></li>
+          <li class="stop it"><span class="when">2025</span><span class="pin"><i></i></span><div class="box"><h3>Le déclic : l'informatique</h3><p>Après le choc post-Covid et l'inflation, le restaurant ferme. Je reviens à une passion d'enfance, nourrie par <em>Science &amp; Vie</em> et les programmes BASIC qu'on recopiait.</p></div></li>
+          <li class="stop it"><span class="when">Janv. – juil. 2026</span><span class="pin"><i></i></span><div class="box"><h3>Stage au CHU de Reims</h3><p><span class="where">Direction des Services Numériques.</span> Support N1, déploiements, déménagements de services, projets GLPI et visioconférence.</p></div></li>
+          <li class="stop it"><span class="when">Juillet 2026</span><span class="pin"><i></i></span><div class="box has-logo"><img class="school" src="assets/logo-cesi.png" alt="CESI École d'ingénieurs" width="240" height="138" loading="lazy"><h3>Diplômé GMSI</h3><p><span class="where">CESI Reims, formation financée par la Région Grand Est.</span> Soutenance réussie : support utilisateur, déploiement et administration d'un parc.</p></div></li>
+          <li class="stop it now"><span class="when">Aujourd'hui</span><span class="pin"><i></i></span><div class="box"><h3>Des missions sur le terrain</h3><p><span class="where">Disponible dès maintenant.</span> Support, maintenance, déploiements, déménagements de parc : j'accumule de l'expérience concrète.</p></div></li>
+          <li class="stop it next"><span class="when">Octobre 2027</span><span class="pin"><i></i></span><div class="box has-logo"><img class="school" src="assets/logo-cesi.png" alt="CESI École d'ingénieurs" width="240" height="138" loading="lazy"><h3>Administrateur Systèmes et Réseaux</h3><p><span class="where">Bac+3 au CESI, en contrat de professionnalisation.</span> À plus long terme, retrouver des fonctions de management et piloter des projets centrés sur les utilisateurs.</p></div></li>
+        </ol>
+      </section>
+
+      <!-- ===== COMPETENCES ===== -->
+      <section class="panel" id="panel-competences" role="tabpanel" aria-labelledby="t-competences" tabindex="0" hidden>
+        <div class="panel-head">
+          <h2>Ma boîte à outils</h2>
+          <p>Les savoir-faire techniques acquis en formation et au CHU, et ce que sept ans de cuisine m'ont appris.</p>
+        </div>
+        <div class="skills">
+          <div class="card tech">
+            <h3>Côté technique</h3>
+            <div class="tech-grid">
+              <div><h4>Support et parc</h4><ul class="chips"><li>Support N1</li><li>Diagnostic matériel</li><li>Masterisation</li><li>Déploiement OS</li><li>MCM</li><li>Périphériques</li><li>Câble management</li><li>Déménagements</li></ul></div>
+              <div><h4>Outils ITSM</h4><ul class="chips"><li>GLPI 11</li><li>GestStock · Barcode</li><li>Ticketing</li><li>Logitech Sync</li><li>Inventaire</li><li>Notices</li></ul></div>
+              <div><h4>Systèmes et réseaux</h4><ul class="chips"><li>Windows</li><li>Ubuntu Server</li><li>LAMP</li><li>DNS</li><li>Pare-feu</li><li>QoS</li><li>KVM</li><li>Windows Server (en cours)</li></ul></div>
+              <div><h4>Méthodes</h4><ul class="chips"><li>ITIL 4</li><li>Cahier des charges</li><li>Benchmark</li><li>Analyse de cause racine</li><li>Documentation</li></ul></div>
+            </div>
+          </div>
+          <div class="kitchen">
+            <h3>Ce que la cuisine m'a appris</h3>
+            <ul class="chips"><li>Communication</li><li>Relation utilisateur</li><li>Management d'équipe</li><li>Gestion des flux</li><li>Autonomie</li><li>Sang-froid au coup de feu</li><li>Force de proposition</li></ul>
+            <p class="langs"><b>Langues.</b> Français, langue maternelle. Anglais courant, à l'oral comme à l'écrit. Espagnol : je suis à l'aise pour suivre une conversation.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="cta-strip">
+        <p>Une mission support ou maintenance ? Je suis à disposition !</p>
+        <div class="btns">
+          <a class="btn btn-blue" href="mailto:benoithusson.it@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>M'écrire</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/benoithussonreims" target="_blank" rel="noopener"><svg class="icon"><use href="#i-in"/></svg>LinkedIn</a>
+          <a class="btn btn-ghost" href="assets/CV-Benoit-Husson-GMSI.pdf" target="_blank" rel="noopener"><svg class="icon"><use href="#i-down"/></svg>CV en PDF</a>
+        </div>
+      </div>
+    </main>
+    <footer>© 2026 Benoît Husson · Reims · Conçu et monté à la main, comme une bonne mise en place.</footer>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"><svg class="icon"><use href="#i-check"/></svg><span></span></div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  /* ---- Onglets principaux ---- */
+  const tabs = $$('.tabs .tab'), bar = $('.ink-bar'), tablist = $('.tabs');
+  const moveBar = t => { bar.style.width = t.offsetWidth - 28 + 'px'; bar.style.transform = `translateX(${t.offsetLeft + 14}px)`; };
+  const show = (id, { focus = false, push = true } = {}) => {
+    const tab = tabs.find(t => t.dataset.tab === id) || tabs[0];
+    const swap = () => {
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+        const p = document.getElementById('panel-' + t.dataset.tab);
+        p.hidden = !on; p.classList.toggle('enter', on && !document.startViewTransition);
+      });
+    };
+    if (document.startViewTransition && !reduce && push) {
+      $('main').style.viewTransitionName = 'panel';
+      document.startViewTransition(swap).finished.finally(() => { $('main').style.viewTransitionName = ''; });
+    } else swap();
+    moveBar(tab);
+    tab.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
+    if (focus) tab.focus();
+    if (push) {
+      history.replaceState(null, '', '#' + tab.dataset.tab);
+      const top = $('.sheet').getBoundingClientRect().top + scrollY;
+      if (scrollY > top) scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+    }
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(t.dataset.tab));
+    t.addEventListener('keydown', e => {
+      const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (k) { e.preventDefault(); show(tabs[(i + k + tabs.length) % tabs.length].dataset.tab, { focus: true }); }
+      if (e.key === 'Home') { e.preventDefault(); show(tabs[0].dataset.tab, { focus: true }); }
+      if (e.key === 'End') { e.preventDefault(); show(tabs.at(-1).dataset.tab, { focus: true }); }
+    });
+  });
+  $$('[data-goto]').forEach(b => b.addEventListener('click', () => show(b.dataset.goto, { focus: true })));
+  const fromHash = () => (location.hash || '#accueil').slice(1);
+  show(fromHash(), { push: false });
+  addEventListener('hashchange', () => show(fromHash(), { push: false }));
+  addEventListener('resize', () => moveBar(tabs.find(t => t.getAttribute('aria-selected') === 'true')));
+  document.fonts && document.fonts.ready.then(() => moveBar(tabs.find(t => t.getAttribute('aria-selected') === 'true')));
+
+  /* ---- Sélecteur de projets ---- */
+  const picks = $$('.pick');
+  const pick = (b, focus) => {
+    picks.forEach(p => { const on = p === b; p.setAttribute('aria-selected', on); p.tabIndex = on ? 0 : -1; document.getElementById(p.getAttribute('aria-controls')).hidden = !on; });
+    const card = document.getElementById(b.getAttribute('aria-controls'));
+    if (!reduce) card.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 450, easing: 'cubic-bezier(.16,1,.3,1)' });
+    if (focus) b.focus();
+  };
+  picks.forEach((b, i) => {
+    b.addEventListener('click', () => pick(b));
+    b.addEventListener('keydown', e => {
+      const k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (k) { e.preventDefault(); pick(picks[(i + k + picks.length) % picks.length], true); }
+    });
+  });
+  picks.forEach((p, i) => p.tabIndex = i ? -1 : 0);
+
+  /* ---- Cuisine / Informatique ---- */
+  const DATA = {
+    cuisine: [
+      ['Le bon arrive', 'Lire la commande, repérer les urgences de la salle.'],
+      ['La mise en place', 'Tout préparer en amont pour ne rien improviser.'],
+      ['Le coup de feu', 'Coordonner la brigade, tenir les délais et la qualité.'],
+      ['Le client repart content', 'Écouter le retour, ajuster pour le service suivant.']
+    ],
+    it: [
+      ['Le ticket tombe', "Qualifier la demande, prioriser selon l'impact utilisateur."],
+      ['Diagnostic et préparation', 'Masteriser, préparer le matériel, chercher la cause racine.'],
+      ["L'intervention", 'Agir vite et proprement, en lien avec les autres services.'],
+      ["L'utilisateur reprend la main", 'Accompagner, documenter, clôturer, éviter la récidive.']
+    ]
+  };
+  const flux = $('#flux'), segBtns = $$('.seg button', flux), txts = $$('.step .txt', flux);
+  let auto = null;
+  const setMode = m => {
+    if (flux.dataset.mode === m) return;
+    segBtns.forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === m));
+    flux.classList.add('swap');
+    setTimeout(() => {
+      flux.dataset.mode = m;
+      DATA[m].forEach(([t, s], i) => { $('b', txts[i]).textContent = t; $('small', txts[i]).textContent = s; });
+      flux.classList.remove('swap');
+    }, reduce ? 0 : 200);
+  };
+  segBtns.forEach(b => b.addEventListener('click', () => { clearInterval(auto); setMode(b.dataset.mode); }));
+  if (!reduce) {
+    auto = setInterval(() => { if (!flux.closest('.panel').hidden && !document.hidden) setMode(flux.dataset.mode === 'it' ? 'cuisine' : 'it'); }, 5000);
+    flux.addEventListener('pointerenter', () => { clearInterval(auto); });
+  }
+
+  /* ---- Scènes animées des réalisations ---- */
+  const fmt = n => n.toLocaleString('fr-FR').replace(/ | /g, ' ');
+  const tween = (dur, step, done) => {
+    if (reduce) { step(1); done && done(); return () => {}; }
+    let raf, t0 = performance.now();
+    const f = t => { const p = Math.min(1, (t - t0) / dur); step(p); if (p < 1) raf = requestAnimationFrame(f); else done && done(); };
+    raf = requestAnimationFrame(f);
+    return () => cancelAnimationFrame(raf);
+  };
+  const SCENES = {
+    move(el) {
+      const grid = $('.move-grid', el);
+      if (!grid.children.length) grid.innerHTML = '<i></i>'.repeat(250);
+      const cells = [...grid.children], N = cells.length;
+      const order = cells.map((_, i) => i).sort((a, b) => ((a * 37) % N) - ((b * 37) % N));
+      const v = k => $(`[data-v="${k}"]`, el);
+      return tween(6500, p => {
+        const f = d => Math.round(N * Math.max(0, Math.min(1, (p - d) / .62)));
+        const fm = f(0), fi = f(.19), fu = f(.38);
+        order.forEach((c, k) => { cells[c].className = k < fu ? 'u' : k < fi ? 'i' : k < fm ? 'm' : ''; });
+        v('m').textContent = fm; v('i').textContent = fi; v('u').textContent = fu;
+        v('week').textContent = Math.min(3, 1 + Math.floor(p * 3));
+      });
+    },
+    glpi(el) {
+      const nodes = $$('.st-node', el), flow = $('.flow', el);
+      flow.style.setProperty('--play', 'running');
+      const nums = $$('[data-to]', el);
+      return tween(3200, p => {
+        const e = 1 - Math.pow(1 - p, 3);
+        nums.forEach(n => n.textContent = fmt(Math.round(+n.dataset.to * e)) + (p === 1 ? (n.dataset.suffix || '') : ''));
+        nodes.forEach((n, i) => n.classList.toggle('lit', p >= i / nodes.length));
+      });
+    },
+    visio(el, armed) {
+      const grid = $('.visio-grid', el);
+      if (!grid.children.length) grid.innerHTML = '<i></i>'.repeat(35) + '<i class="other"></i>'.repeat(52);
+      const logi = [...grid.children].slice(0, 35), out = $('[data-v="sync"]', el);
+      if (!armed) { logi.forEach(i => i.classList.remove('ok')); out.textContent = 0; return () => {}; }
+      let done = -1;
+      return tween(2800, p => {
+        const k = Math.round(p * 35);
+        for (let j = done + 1; j < k; j++) logi[j].classList.add('ok');
+        done = k - 1; out.textContent = k;
+      });
+    }
+  };
+  $$('.scene').filter(el => SCENES[el.dataset.scene]).forEach(el => {
+    const kind = el.dataset.scene, btn = $('.replay', el);
+    let stop = () => {};
+    const run = armed => { stop(); stop = SCENES[kind](el, armed); };
+    if (kind === 'visio') {
+      run(false);
+      btn.addEventListener('click', () => {
+        const fresh = !btn.classList.contains('go') ;
+        if (fresh) run(false);
+        run(true);
+        btn.classList.remove('go');
+        btn.lastChild.textContent = 'Rejouer';
+      });
+      return;
+    }
+    if (btn) btn.addEventListener('click', () => run(true));
+    new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { run(true); o.disconnect(); } }), { threshold: .4 }).observe(el);
+  });
+
+  /* ---- Avant / après ---- */
+  $$('.compare').forEach(c => {
+    const r = $('.cmp-range', c);
+    const set = v => c.style.setProperty('--pos', v + '%');
+    r.addEventListener('input', () => set(r.value));
+    if (!reduce) {
+      const hint = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return; hint.disconnect();
+        tween(1400, p => { const v = 50 + Math.sin(p * Math.PI * 2) * 22; r.value = v; set(v); });
+      }), { threshold: .5 });
+      hint.observe(c);
+    }
+  });
+
+  /* ---- Mini-jeu : trouvez la panne ---- */
+  const TESTS = {
+    reboot: ['trap', 'Ça repart… pour deux jours', "Le redémarrage soulage, mais la panne revient. C'était la réponse par défaut avant mon arrivée : on traite le symptôme, pas la cause."],
+    phys: ['ok', 'Physique : RAS', 'Ventilation correcte, alimentation stable, câbles en bon état. Ce n\'est pas ça.'],
+    net: ['ok', 'Réseau : RAS', 'Pas de perte de paquets significative, QoS correctement configurée. On continue.'],
+    app: ['ok', 'Applicatif : RAS', 'Réglages Teams vérifiés, même symptôme avec un autre logiciel. La piste applicative tombe.'],
+    fw: ['win', 'Trouvé : le firmware n\'avait jamais été mis à jour', 'Mise à jour faite, plus de freeze. Et derrière ce cas, tout un parc à suivre : d\'où le déploiement de Logitech Sync juste en dessous.']
+  };
+  $$('[data-scene="game"]').forEach(el => {
+    const btns = $$('.g-actions button', el), log = $('.g-log', el);
+    let n = 0;
+    const reset = () => { n = 0; log.innerHTML = ''; btns.forEach(b => { b.disabled = false; b.removeAttribute('data-r'); }); };
+    btns.forEach(b => b.addEventListener('click', () => {
+      const [r, t, d] = TESTS[b.dataset.t];
+      if (r !== 'trap') n++;
+      b.dataset.r = r; if (r !== 'trap') b.disabled = true;
+      const li = document.createElement('li'); li.className = r;
+      li.innerHTML = '<b></b><span></span>';
+      $('b', li).textContent = r === 'win' ? `${t} (${n} test${n > 1 ? 's' : ''})` : t;
+      $('span', li).textContent = d;
+      log.prepend(li);
+      if (r === 'win') btns.forEach(x => x.disabled = true);
+    }));
+    $('.reset', el).addEventListener('click', reset);
+  });
+
+  /* ---- Vidéos : lecture automatique (sans son) quand visibles ---- */
+  const vids = $$('video.vid');
+  if (!reduce && 'IntersectionObserver' in window) {
+    const vo = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; v.play().catch(() => {}); }
+      else if (!v.paused) v.pause();
+    }), { threshold: .5 });
+    vids.forEach(v => vo.observe(v));
+  }
+
+  /* ---- Labo ---- */
+  const INFO = {
+    box: ['Bbox', "La box de l'opérateur sert uniquement d'accès internet. Le réseau de la maison est géré derrière elle."],
+    deco: ['TP-Link Deco S7, en mode routeur', "C'est lui qui gère le réseau local : adressage, DHCP et Wi-Fi mesh. Je garde la main sur ma configuration, indépendamment de la box."],
+    adguard: ['AdGuard Home', 'Le serveur DNS du réseau. Il bloque publicités, traqueurs et domaines malveillants pour tous les appareils du foyer, sans rien installer dessus.'],
+    zfw: ['ZFW, pare-feu hôte pour ZimaOS', "ZimaOS n'a pas de pare-feu natif. ZFW autorise uniquement les ports utiles, filtre ceux publiés par Docker, et annule automatiquement une règle non confirmée sous 120 s, pour ne jamais se retrouver bloqué dehors."],
+    komga: ['Komga', "Un serveur de bibliothèque pour lire mes mangas depuis n'importe quel appareil du réseau. Un exemple concret d'auto-hébergement."],
+    ghost: ['Ghostfolio', "Le suivi de mes finances personnelles. Des données sensibles, gardées chez moi plutôt que dans le cloud d'un tiers."],
+    kvm: ['Hyperviseur KVM (en cours)', "Un vieux portable reconverti en serveur de virtualisation, pour monter un Windows Server et m'entraîner à Active Directory, au DNS et aux GPO."]
+  };
+  const nodes = $$('.net .node'), info = $('#netInfo');
+  nodes.forEach(n => n.addEventListener('click', () => {
+    nodes.forEach(x => x.setAttribute('aria-pressed', x === n));
+    const [t, d] = INFO[n.dataset.k];
+    $('b', info).textContent = t; $('p', info).textContent = d;
+    if (!reduce) info.animate([{ opacity: .3, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }], { duration: 350, easing: 'ease-out' });
+  }));
+  nodes.forEach(n => n.setAttribute('aria-pressed', 'false'));
+
+  /* ---- Copie de l'email ---- */
+  const toast = $('#toast');
+  $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {
+    const mail = b.dataset.copy;
+    try { await navigator.clipboard.writeText(mail); }
+    catch { location.href = 'mailto:' + mail; return; }
+    $('span', toast).textContent = 'Adresse copiée : ' + mail;
+    toast.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => toast.classList.remove('show'), 2200);
+  }));
+})();
+</script>
+</body>
+</html>
